@@ -1,4 +1,3 @@
-import 'package:componentes/src/pages/alert_page.dart';
 import 'package:componentes/src/providers/menu_provider.dart';
 import 'package:componentes/src/utils/icono_string_util.dart';
 
@@ -30,6 +29,10 @@ class HomePage extends StatelessWidget {
   List<Widget> _listaItems(List<dynamic> data, BuildContext context) {
     final List<Widget> opciones = [];
 
+    if (data == null) {
+      return [];
+    }
+
     data.forEach((opt) {
       final widgetTemp = ListTile(
         title: Text(opt['texto']),
@@ -37,9 +40,9 @@ class HomePage extends StatelessWidget {
         trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
         onTap: () {
           /* final route = MaterialPageRoute(
-            builder: (context) => AlertPage()
-          );
-          Navigator.push(context, route); */
+              builder: (context) => AlertPage()
+            );
+            Navigator.push(context, route); */
 
           Navigator.pushNamed(context, opt['ruta']);
         },
